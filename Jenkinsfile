@@ -25,6 +25,7 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Test Stage'
+        input(message: 'Deploy?', id: 'Ok', submitter: 'moaaz')
       }
     }
 
