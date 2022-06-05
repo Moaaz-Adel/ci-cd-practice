@@ -2,12 +2,23 @@ pipeline {
   agent any
   stages {
     stage('Starting') {
-      steps {
-        retry(count: 1) {
-          echo 'Starting Pipe'
+      parallel {
+        stage('Starting') {
+          steps {
+            retry(count: 1) {
+              echo 'Starting Pipe'
+            }
+
+            echo 'step 1'
+          }
         }
 
-        echo 'step 1'
+        stage('Parallel') {
+          steps {
+            echo 'Running Parallel'
+          }
+        }
+
       }
     }
 
